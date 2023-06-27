@@ -1,15 +1,17 @@
 {
   "name": "management",
   "version": "1.0.0",
-  "script:": {
+  "license": "ria",
+  "scripts": {
     "client": "cd client && yarn start",
     "server": "nodemon server.js",
-    "dev": "concurrently --kill-others-on-fail \"'yarn server\" \"yarn client\""
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
   "dependencies": {
     "body-parser": "1.20.2",
     "express": "^4.16.4",
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "yarn": "^1.22.19"
   },
   "devDependencies": {
     "concurrently": "^4.0.1"

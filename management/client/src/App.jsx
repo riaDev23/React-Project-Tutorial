@@ -2,119 +2,11 @@ import * as React from "react";
 /* CSS IMPORT */
 import "./App.css";
 
-/* COMPONENTS IMPORT */
-
-
 /* MUI TABLE IMPORT */
 import { DataGrid } from "@mui/x-data-grid";
 import { Paper } from "@mui/material";
-
-const CUSTOMERS = [
-  {
-    id: 1,
-    image: "https://picsum.photos/150/150",
-    name: "강리아",
-    birthday: "901014",
-    gender: "남",
-    job: "백수",
-  },
-  {
-    id: 2,
-    image: "https://picsum.photos/151/151",
-    name: "쇼째즈",
-    birthday: "910201",
-    gender: "남",
-    job: "백수",
-  },
-  {
-    id: 3,
-    image: "https://picsum.photos/152/152",
-    name: "홍길동",
-    birthday: "950102",
-    gender: "남",
-    job: "도적",
-  },
-  {
-    id: 4,
-    image: "https://picsum.photos/152/152",
-    name: "홍길동",
-    birthday: "950102",
-    gender: "남",
-    job: "도적",
-  },
-  {
-    id: 5,
-    image: "https://picsum.photos/152/152",
-    name: "홍길동",
-    birthday: "950102",
-    gender: "남",
-    job: "도적",
-  },
-  {
-    id: 6,
-    image: "https://picsum.photos/152/152",
-    name: "홍길동",
-    birthday: "950102",
-    gender: "남",
-    job: "도적",
-  },
-  {
-    id: 7,
-    image: "https://picsum.photos/152/152",
-    name: "홍길동",
-    birthday: "950102",
-    gender: "남",
-    job: "도적",
-  },
-  {
-    id: 8,
-    image: "https://picsum.photos/152/152",
-    name: "홍길동",
-    birthday: "950102",
-    gender: "남",
-    job: "도적",
-  },
-  {
-    id: 9,
-    image: "https://picsum.photos/152/152",
-    name: "홍길동",
-    birthday: "950102",
-    gender: "남",
-    job: "도적",
-  },
-  {
-    id: 10,
-    image: "https://picsum.photos/152/152",
-    name: "홍길동",
-    birthday: "950102",
-    gender: "남",
-    job: "도적",
-  },
-  {
-    id: 11,
-    image: "https://picsum.photos/152/152",
-    name: "홍길동",
-    birthday: "950102",
-    gender: "남",
-    job: "도적",
-  },
-  {
-    id: 12,
-    image: "https://picsum.photos/152/152",
-    name: "홍길동",
-    birthday: "950102",
-    gender: "남",
-    job: "도적",
-  },
-  {
-    id: 13,
-    image: "https://picsum.photos/152/152",
-    name: "홍길동",
-    birthday: "950102",
-    gender: "남",
-    job: "도적",
-  },
-];
+import { useState } from "react";
+import { useEffect } from "react";
 
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
@@ -146,10 +38,23 @@ const columns = [
 ];
 
 function App() {
+  const [customers, setCustomers] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/customers")
+      .then((response) => response.json())
+      .then((data) => {
+        setCustomers(data.CUSTOMERS);
+      })
+      .catch((error) => {
+        console.error("Error fetching customers:", error);
+      });
+  }, []);
+
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
       <DataGrid
-        rows={CUSTOMERS}
+        rows={customers}
         columns={columns}
         initialState={{
           pagination: {
