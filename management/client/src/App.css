@@ -1,0 +1,7 @@
+.gray-background{
+  background: darkgray;
+}
+
+.MuiDataGrid-root .MuiDataGrid-cell:focus-within {
+  outline: none !important
+}

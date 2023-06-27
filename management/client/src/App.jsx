@@ -3,7 +3,7 @@ import * as React from "react";
 import "./App.css";
 
 /* COMPONENTS IMPORT */
-import Customer from "./components/Customer";
+
 
 /* MUI TABLE IMPORT */
 import { DataGrid } from "@mui/x-data-grid";
@@ -145,8 +145,6 @@ const columns = [
   { field: "job", headerName: "직업", width: 150 },
 ];
 
-console.log(CUSTOMERS);
-
 function App() {
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
@@ -159,6 +157,7 @@ function App() {
           },
         }}
         pageSizeOptions={[5, 10, 20]}
+        checkboxSelection
       ></DataGrid>
     </Paper>
   );
